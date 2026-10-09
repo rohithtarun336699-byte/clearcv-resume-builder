@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a professional resume for free. Choose a template, edit your details, preview instantly, and print or save as PDF.">
+  <title>ClearCV — Free Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ClearCV home"><span class="brand-mark">C</span><span>Clear<span class="brand-light">CV</span></span></a>
+    <div class="header-actions">
+      <span class="saved-status" id="savedStatus" aria-live="polite">Your draft stays on this device</span>
+      <button class="btn btn-outline" id="clearBtn" type="button">Clear draft</button>
+      <button class="btn btn-primary" id="downloadBtn" type="button">Download PDF ↗</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">FREE RESUME BUILDER</p>
+        <h1>Your next opportunity<br><span>starts with a great resume.</span></h1>
+        <p class="intro-copy">Add your details, choose a style, and preview your resume as you build. Your draft is saved in this browser.</p>
+      </div>
+      <div class="step-pill"><span class="step-dot"></span> Live preview <span class="step-separator">·</span> 10 templates <span class="step-separator">·</span> Free PDF</div>
+    </section>
+
+    <div class="workspace">
+      <section class="editor-panel" aria-label="Resume editor">
+        <div class="panel-heading">
+          <div><p class="eyebrow">YOUR DETAILS</p><h2>Build your resume</h2></div>
+          <span class="privacy-tag">🔒 Saved locally</span>
+        </div>
+
+        <div class="progress-wrap"><div class="progress-label"><span>Profile completion</span><strong id="progressText">0%</strong></div><div class="progress-track"><div id="progressBar"></div></div></div>
+
+        <details class="form-section" open>
+          <summary><span class="section-icon">01</span><span>Personal information</span><span class="summary-chevron">⌄</span></summary>
+          <div class="form-grid">
+            <label class="full">Full name<input data-field="name" placeholder="e.g. Priya Sharma" autocomplete="name"></label>
+            <label>Professional title<input data-field="title" placeholder="e.g. Marketing Executive"></label>
+            <label>Email address<input data-field="email" type="email" placeholder="you@example.com" autocomplete="email"></label>
+            <label>Phone number<input data-field="phone" placeholder="+91 98765 43210" autocomplete="tel"></label>
+            <label>Location<input data-field="location" placeholder="Hyderabad, India" autocomplete="address-level2"></label>
+            <label class="full">Professional summary<textarea data-field="summary" rows="4" placeholder="Write 2–4 sentences about your experience, strengths, and career goals."></textarea></label>
+            <label>LinkedIn (optional)<input data-field="linkedin" placeholder="linkedin.com/in/yourname"></label>
+            <label>Portfolio / website<input data-field="website" placeholder="yourportfolio.com"></label>
+          </div>
+        </details>
+
+        <details class="form-section" open>
+          <summary><span class="section-icon">02</span><span>Work experience</span><button class="add-inline" type="button" data-add="experience">+ Add</button></summary>
+          <div id="experienceList" class="repeat-list"></div>
+        </details>
+
+        <details class="form-section" open>
+          <summary><span class="section-icon">03</span><span>Education</span><button class="add-inline" type="button" data-add="education">+ Add</button></summary>
+          <div id="educationList" class="repeat-list"></div>
+        </details>
+
+        <details class="form-section">
+          <summary><span class="section-icon">04</span><span>Skills</span><span class="summary-chevron">⌄</span></summary>
+          <label class="full">Skills, separated by commas<textarea data-field="skills" rows="3" placeholder="Communication, Project management, Excel, Teamwork"></textarea></label>
+        </details>
+
+        <details class="form-section">
+          <summary><span class="section-icon">05</span><span>Projects & certifications</span><span class="summary-chevron">⌄</span></summary>
+          <label class="full">Projects (one per line)<textarea data-field="projects" rows="3" placeholder="Website redesign — Built a responsive site for a local business"></textarea></label>
+          <label class="full">Certifications (one per line)<textarea data-field="certifications" rows="3" placeholder="Google Digital Marketing Certificate"></textarea></label>
+        </details>
+
+        <div class="editor-footer">
+          <span class="privacy-note">Your information stays in this browser unless you choose to print or save it.</span>
+          <button class="btn btn-primary btn-wide" id="downloadBtnBottom" type="button">Download resume as PDF ↗</button>
+        </div>
+      </section>
+
+      <section class="preview-panel" aria-label="Live resume preview">
+        <div class="preview-toolbar">
+          <div><p class="eyebrow">LIVE PREVIEW</p><h2>Your resume</h2></div>
+          <label class="template-select-label template-select-accessible">Template
+            <select id="templateSelect" aria-label="Choose resume template">
+              <option value="modern">01 · Modern</option>
+              <option value="classic">02 · Classic</option>
+              <option value="minimal">03 · Minimal</option>
+              <option value="sidebar">04 · Sidebar</option>
+              <option value="executive">05 · Executive</option>
+              <option value="creative">06 · Creative</option>
+              <option value="compact">07 · Compact</option>
+              <option value="elegant">08 · Elegant</option>
+              <option value="technical">09 · Technical</option>
+              <option value="fresh">10 · Fresh</option>
+            </select>
+          </label>
+        </div>
+        <div class="preview-meta"><span><span class="live-dot"></span> Updates as you type</span><span>A4 · Print-ready</span></div>
+        <div class="template-rail" aria-label="Choose a resume template">
+          <button class="template-card" type="button" data-template-choice="modern" aria-pressed="true"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Modern</span></button>
+          <button class="template-card" type="button" data-template-choice="classic" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Classic</span></button>
+          <button class="template-card" type="button" data-template-choice="minimal" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Minimal</span></button>
+          <button class="template-card" type="button" data-template-choice="sidebar" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Sidebar</span></button>
+          <button class="template-card" type="button" data-template-choice="executive" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Executive</span></button>
+          <button class="template-card" type="button" data-template-choice="creative" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Creative</span></button>
+          <button class="template-card" type="button" data-template-choice="compact" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Compact</span></button>
+          <button class="template-card" type="button" data-template-choice="elegant" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Elegant</span></button>
+          <button class="template-card" type="button" data-template-choice="technical" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Technical</span></button>
+          <button class="template-card" type="button" data-template-choice="fresh" aria-pressed="false"><span class="template-thumb"><i class="thumb-line"></i></span><span class="template-card-name">Fresh</span></button>
+        </div>
+        <div class="resume-stage">
+          <article id="resume" class="resume template-modern" aria-label="Resume document">
+            <header class="resume-header">
+              <h1 id="previewName">Your Name</h1><p id="previewTitle" class="resume-title">Your Professional Title</p>
+              <div id="previewContact" class="resume-contact">Email · Phone · Location</div>
+              <div id="previewLinks" class="resume-links"></div>
+            </header>
+            <section class="resume-section" id="summarySection"><h2>Profile</h2><p id="previewSummary" class="resume-summary">Your professional summary will appear here. Describe your strengths, experience, and the value you bring.</p></section>
+            <section class="resume-section" id="experienceSection"><h2>Experience</h2><div id="previewExperience"></div></section>
+            <section class="resume-section" id="educationSection"><h2>Education</h2><div id="previewEducation"></div></section>
+            <section class="resume-section" id="skillsSection"><h2>Key skills</h2><div id="previewSkills" class="skill-list"><span>Communication</span><span>Problem solving</span><span>Teamwork</span></div></section>
+            <section class="resume-section" id="projectsSection"><h2>Projects</h2><ul id="previewProjects"></ul></section>
+            <section class="resume-section" id="certificationsSection"><h2>Certifications</h2><ul id="previewCertifications"></ul></section>
+          </article>
+        </div>
+        <p class="preview-footnote">Tip: For best results, use concise bullet points and keep your resume to 1–2 pages.</p>
+      </section>
+    </div>
+    <footer class="site-footer"><span>ClearCV · Free Resume Builder</span><span>Made for your next step.</span></footer>
+  </main>
+  <div id="toast" role="status" aria-live="polite" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
